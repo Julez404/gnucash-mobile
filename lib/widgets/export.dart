@@ -34,19 +34,6 @@ class _ExportState extends State<Export> {
     super.initState();
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  // void _selectFolder() {
-  //   FilePicker.platform.getDirectoryPath().then((value) {
-  //     if (value == null) return;
-  //     setState(() {
-  //       _directoryPath = value;
-  //       _folder = value.substring(value.lastIndexOf("/"));
-  //     });
-  //   });
-  // }
-=======
   void shareFile(String filename, String data) async {
     Directory appDocumentsDirectory =
         await getApplicationDocumentsDirectory(); // 1
@@ -62,24 +49,15 @@ class _ExportState extends State<Export> {
     await Share.shareFiles([filePath], text: 'Great picture');
   }
 
->>>>>>> 212e21f (Feat: add export to other application)
   void _selectFolder() {
     FilePicker.platform.getDirectoryPath().then((value) {
       if (value == null) return;
       setState(() {
         _directoryPath = value;
-<<<<<<< HEAD
         _directory = value.substring(value.lastIndexOf("/"));
       });
     });
   }
-=======
-        _folder = value.substring(value.lastIndexOf("/"));
-      });
-    });
-  }
->>>>>>> 373b3f1 (Feat: add export to other application)
->>>>>>> 212e21f (Feat: add export to other application)
 
   @override
   Widget build(BuildContext context) {
@@ -139,49 +117,6 @@ class _ExportState extends State<Export> {
                       });
                     },
                   ),
-<<<<<<< HEAD
-                  TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Constants.darkAccent),
-                    ),
-                    onPressed: () async {
-                      if (_directoryPath == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("Please choose a valid directory")));
-                        return null;
-                      }
-
-                      if (!snapshot.hasData) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("No transactions to export.")));
-                        return;
-                      }
-
-                      final _yearMonthDay =
-                          DateFormat('yyyyMMdd').format(DateTime.now());
-                      try {
-                        final _fileName =
-                            "$_directoryPath/${_yearMonthDay}_${DateTime.now().millisecond}.gnucash_transactions.csv";
-                        await File(_fileName).writeAsString(snapshot.data);
-
-                        if (deleteTransactionsOnExport) {
-                          Provider.of<TransactionsModel>(context, listen: false)
-                              .removeAll();
-                        }
-
-                        Navigator.pop(context, true);
-                      } catch (e) {
-                        print(e);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Error exporting!")));
-                      }
-                    },
-                    child: Text(
-                      "Export",
-                      style: TextStyle(
-                        color: Constants.lightPrimary,
-=======
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -230,7 +165,6 @@ class _ExportState extends State<Export> {
                             color: Constants.lightPrimary,
                           ),
                         ),
->>>>>>> 373b3f1 (Feat: add export to other application)
                       ),
                       TextButton(
                         style: ButtonStyle(
